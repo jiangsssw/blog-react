@@ -1,10 +1,4 @@
-body{
-    width: 100%;
-    padding: 0;
-    margin: 0;
-    overflow: auto;
-    background-color: #fafafa;
-}
+
 .container{
     position: relative;
     width: 1200px;
@@ -85,9 +79,9 @@ html,ul,li,a,p.div,span,button,label,head{
 .recommend ul li{
     line-height: 2em;
 }
-.recommend ul li:first-child{
+/* .recommend ul li:first-child{
     display: none;
-}
+} */
 .visited{
     width: 100%;
 }
@@ -99,7 +93,7 @@ html,ul,li,a,p.div,span,button,label,head{
     position: relative;
     width: 74%;
     border: solid 1px #fafafa;
-    left: 295px;
+    left: 300px;
     top: 20px;
     background-color: #fafafa;
 }
@@ -163,9 +157,9 @@ html,ul,li,a,p.div,span,button,label,head{
     margin: auto;
     color: white;
 }
-.template_index_art .text:first-child {
+/* .template_index_art .text:first-child {
     display: none;
-}
+} */
 .Manage_articles{
     margin-bottom: 50px;
 }

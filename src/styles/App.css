@@ -1,7 +1,11 @@
 /* Base Application Styles */
 body {
-  color: #fff;
-  background: #222;
+  margin-top: -20px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: auto;
+  background-color: #fafafa;
 }
 
 .index img {
