@@ -1,0 +1,77 @@
+.header blockquote{
+    font-family: 微软雅黑;
+    font-size: 1.5em;
+}
+.navigation ul li a{
+    font-size: 1.2em;
+    font-family: 微软雅黑;
+}
+.navigation ul li a:hover{
+    color: palevioletred;
+    cursor: pointer;
+}
+.author ul li{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+    line-height: 1.5em;
+}
+.author ul li label{
+    font-size: 1em;
+    font-family: 宋体;
+}
+.author ul p{
+    font-size: 1em;
+    font-family: 宋体;
+}
+.recommend label{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.recommend ul li{
+    font-size: 1em;
+    font-family: 微软雅黑;
+}
+.recommend ul li:hover{
+    color: palevioletred;
+    cursor: pointer;
+}
+.visited div a{
+    font-family: 微软雅黑;
+    font-size: 1.5em;
+}
+.article_title a{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.article_title a:hover{
+    cursor: pointer;
+     color: #e58c7c;
+}
+.article_preview_content p{
+    font-size: 1.2em;
+    font-family: 新宋体;
+}
+.previous_page{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.article_next{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.message_text a{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.fished a{
+    font-family: 微软雅黑;
+    font-size: 1.2em;
+}
+.check_message .someone li{
+    font-family: 微软雅黑;
+    font-size: 1em;
+}
+.check_message span{
+    font-family: "微软雅黑 Light";
+    font-size: 1.2em;
+}

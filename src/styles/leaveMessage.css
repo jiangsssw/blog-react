@@ -1,0 +1,48 @@
+.suggestion{
+    width: 70%;
+    margin: auto;
+}
+.faker_name{
+    margin-top: 40px;
+}
+.faker_name ul li {
+    line-height: 3em;
+    font-family: 微软雅黑;
+    font-size: 1.2em
+}
+.message_text{
+    margin-top: 30px;
+}
+.message_text div textarea{
+    width: 680px;
+    height: 350px;
+}
+.fished{
+    width: 100%;
+    display: none;
+}
+.success_pic{
+    background: url("../images/success.jpg");
+    width: 280px;
+    height: 280px;
+    margin: auto;
+}
+.check_message{
+    width: 100%;
+    border: solid 1px #ECEDF1;
+    margin-top: 150px;
+    background: #ECEDF1;
+    font-size: 1em;
+    border-radius: 10px;
+}
+.check_message .someone{
+    margin-top: 30px;
+}
+.check_message p{
+    margin-left: 20px;
+    -webkit-margin-before: 0em;
+    -webkit-margin-after: 0em;
+    font-size: 1em;
+    font-family: 新宋体;
+
+}

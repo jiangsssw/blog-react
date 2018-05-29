@@ -1,0 +1,52 @@
+ul,li{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.login-body{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    background: url("../images/milky-way.jpg");
+    min-width: 860px;
+    height: 100%;
+}
+.login{
+    position: absolute;
+    width: 40%;
+    height: 30%;
+    border: solid 1px black;
+    top: 35%;
+    left: 30%;
+    background-color: darkslateblue;
+    opacity: 0.9;
+    min-width: 370px;
+    border-radius: 5px;
+}
+.login ul{
+    position: relative;
+    top: 30%;
+    left: 30%;
+}
+.login ul li{
+    font-size: 1.3em;
+}
+.btn_group{
+    position: relative;
+    top: 25px;
+    left: 65%;
+}
+.btn_group button{
+    margin-left: 20px;
+}
+.btn_group button a{
+    text-decoration: none;
+    font-size: 1.5em;
+}
+.f_jump{
+    margin-left: 240px;
+}
+.up_lable{
+    width: 85px;
+    display: inline-block;
+}

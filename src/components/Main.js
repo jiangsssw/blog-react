@@ -5,7 +5,14 @@ import React from 'react';
 import BgFrameComponent from './bgFrame'
 import ArticleComponent from './article'
 import FooterCompontent from './foot'
+import LeaveMessageComponent from './leaveMessage'
+import WriteArticlesComponent from './wrtieArticles'
+import PictureShowComponent from './picture_show'
+import DemoComponent from './demo'
+import ManageArticlesComponent from './manageArtcles'
+
 import '../styles/BgFrame.css'
+import '../styles/fontStyle.css'
 //let yeomanImage = require('../images/yeoman.png');
 
 class AppComponent extends React.Component {
@@ -16,6 +23,11 @@ class AppComponent extends React.Component {
             <BgFrameComponent>
              </BgFrameComponent>
              <ArticleComponent/>
+             <LeaveMessageComponent/>
+             <WriteArticlesComponent/>
+             <PictureShowComponent/>
+             <DemoComponent/>
+             <ManageArticlesComponent/>
           </div>
           <FooterCompontent/>
       </div>

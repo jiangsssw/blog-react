@@ -1,0 +1,11 @@
+.game1{
+    overflow: hidden;
+    display: none;
+}
+.show_game{
+    width:820px;
+    height:600px;
+}
+.chat{
+    display: none;
+}

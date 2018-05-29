@@ -1,0 +1,21 @@
+.album{
+    margin: auto;
+    width: 570px;
+    height: auto;
+    margin-top: 10px;
+}
+.pic{
+    margin-top: 10px;
+    width: 98%;
+    height: 80%;
+    border: solid 1px black;
+    margin: auto;
+    overflow: hidden;
+    text-align: center;
+}
+.album .pic_title{
+    width: 98%;
+    height: 10%;
+    border: solid 1px beige;
+    margin: auto;
+}
