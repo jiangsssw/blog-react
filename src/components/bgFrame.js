@@ -2,7 +2,31 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 class BgFrameConponent extends React.Component{
 
-
+    constructor(props){
+        super(props);
+        this.state={
+            articlesItem: '11'
+        }
+    }
+componentWillMount(){
+    let articlesTitle=[]
+    let obj={
+        method:'get'
+    }
+    fetch('http://localhost:3000/articles',obj).then((res)=>{
+        return res.json();
+    }).then((res)=>{
+        // console.log(res[2].title);
+        for(let item in res){
+            articlesTitle.push(res[item].title);
+        }
+        
+        this.setState({
+            
+            articlesItem: articlesTitle
+        });
+    })
+}
     render(){
         return (
          <div>
@@ -40,7 +64,11 @@ class BgFrameConponent extends React.Component{
             <div className="recommend">
                 <label>推荐文章</label>
                 <ul className="aside_ul">
-                    <li className="aside_title" >推荐文章名字</li>
+                    <li className="aside_title" >{this.state.articlesItem[0]}</li>
+                    <li className="aside_title" >{this.state.articlesItem[1]}</li>
+                    <li className="aside_title" >{this.state.articlesItem[2]}</li>
+                    <li className="aside_title" >{this.state.articlesItem[3]}</li>
+                    <li className="aside_title" >{this.state.articlesItem[4]}</li>
                 </ul>
             </div>
             <div className="visited">
