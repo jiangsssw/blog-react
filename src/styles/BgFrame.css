@@ -173,6 +173,9 @@ html,ul,li,a,p.div,span,button,label,head{
     position: relative;
     left: 30%;
 }
+.active{
+    color: palevioletred;
+}
 
 
 

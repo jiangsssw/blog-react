@@ -1,25 +1,12 @@
 /* Base Application Styles */
 body {
-  margin-top: -20px;
+
   width: 100%;
   padding: 0;
   margin: 0;
   overflow: auto;
   background-color: #fafafa;
 }
-
-.index img {
-  margin: 40px auto;
-  border-radius: 4px;
-  background: #fff;
-  display: block;
-}
-
-.index .notice {
-  margin: 20px auto;
-  padding: 15px 0;
-  text-align: center;
-  border: 1px solid #000;
-  border-width: 1px 0;
-  background: #666;
+.index{
+  margin-top: -20px;
 }

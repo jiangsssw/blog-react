@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from 'react-router-dom'
 class BgFrameConponent extends React.Component{
 
 
@@ -12,13 +12,13 @@ class BgFrameConponent extends React.Component{
         <div className="navigation">
             {/* 这里将li的开始标签和结束标签不写在一行是为了消除li之间存在空白字符的问题*/}
             <ul>
-                <li><a href="/">主页</a>
-                </li><li><a href="/mange">管理文章</a>
-            </li><li><a href="/leave">留言</a>
-            </li><li><a href="/picture">图片</a>
-            </li><li><a href="/demo">小程序</a>
-            </li><li><a onclick="introuduce(3)">网站介绍</a>
-            </li><li><a href="/login">管理员登录</a>
+                <li><Link to='/' >主页</Link>
+                </li><li><Link to='/manage'>管理文章</Link>
+            </li><li><Link to="/leaveMessage" >留言</Link >
+            </li><li><Link to="/picture" >图片</Link >
+            </li><li><Link to="/demo" >小程序</Link >
+            </li><li><a>网站介绍</a>
+            </li><li><Link to="/login">管理员登录</Link >
             </li>
             </ul>
         </div>
