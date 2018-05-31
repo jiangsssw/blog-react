@@ -176,6 +176,15 @@ html,ul,li,a,p.div,span,button,label,head{
 .active{
     color: palevioletred;
 }
+.article_content{
+    border:solid 1px #fafafa;
+    border-radius: 10px;
+    width: 100%;
+    margin: auto;
+    background-color: #ECEDF1;
+    font-size: 1.2em;
+    font-family: 新宋体;
+}
 
 
 

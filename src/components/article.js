@@ -1,6 +1,6 @@
 import React from 'react'
-import Pubsub from 'pubsub-js'
 import {Link} from 'react-router-dom'
+import Pubsub from 'pubsub-js'
 
 let Articles=[];
 let index = 1;
@@ -18,25 +18,19 @@ class ArticlesConpoment extends React.Component{
             Nextdisabled:''
         }
     }
-    checkArticles(id,e){
-        console.log(id);
-        Pubsub.publish('checkArticles',id);
-        
-        e.preventDefault();
-        e.stopPropagation();
-    }
     getRefleshDataFromServer(url){
+        
         return fetch(url,{method:'get'}).then((res)=>{
             return res.json();
         }).then((res)=>{
+            
             for(let item in res){
                 id=res[item].id;
-                console.log(id);
                 reflesh[item]=( <div key={res[item].id}>
                 <div className="muban" >
                 <div className="text">
                     <article>
-                        <div className="article_title"><Link to='/checkArticle' onClick={this.checkArticles.bind(this,id)}>{res[item].title}</Link></div>
+                        <div className="article_title"><Link to={'/checkArticle/$'+res[item].id}>{res[item].title}</Link></div>
                         <div className="article_preview_content"><p>{res[item].preview}</p></div>
                     </article>
                  </div>
@@ -92,11 +86,10 @@ class ArticlesConpoment extends React.Component{
     }).then((res)=>{
         for(let item in res){
             id=res[item].id;
-            console.log(id);
             Articles[item]=( <div className="muban" key={res[item].id}>
             <div className="text">
                 <article>
-                    <div className="article_title"><Link to='/checkArticle' onClick={this.checkArticles.bind(this,id)}>{res[item].title}</Link></div>
+                    <div className="article_title"><Link to={'/checkArticle/$'+res[item].id} >{res[item].title}</Link></div>
                     <div className="article_preview_content"><p>{res[item].preview}</p></div>
                 </article>
              </div>

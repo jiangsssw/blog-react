@@ -9,13 +9,16 @@ class BgFrameConponent extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            articlesItem: '11'
+            articlesItem: '11',
+            idd:''
         }
     }
 componentWillMount(){
     let articlesTitle=[]
+    let articlesId=[]
     let obj={
-        method:'get'
+        method:'get',
+        idd:''
     }
     fetch('http://localhost:3000/articles',obj).then((res)=>{
         return res.json();
@@ -23,12 +26,14 @@ componentWillMount(){
         // console.log(res[2].title);
         for(let item in res){
             articlesTitle.push(res[item].title);
+            articlesId.push(res[item].id);
         }
         //发布一个订阅时间，发布文章的数目
         Artlength=res.length;
+        
         Pubsub.publish('ArticlesLength',Artlength);
         this.setState({
-            
+            idd : articlesId,
             articlesItem: articlesTitle
         });
     })
@@ -70,11 +75,11 @@ componentWillMount(){
             <div className="recommend">
                 <label>推荐文章</label>
                 <ul className="aside_ul">
-                    <li className="aside_title" >{this.state.articlesItem[0]}</li>
-                    <li className="aside_title" >{this.state.articlesItem[1]}</li>
-                    <li className="aside_title" >{this.state.articlesItem[2]}</li>
-                    <li className="aside_title" >{this.state.articlesItem[3]}</li>
-                    <li className="aside_title" >{this.state.articlesItem[4]}</li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[0]} >{this.state.articlesItem[0]}</Link></li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[1]} >{this.state.articlesItem[1]}</Link></li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[2]} >{this.state.articlesItem[2]}</Link></li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[3]} >{this.state.articlesItem[3]}</Link></li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[4]} >{this.state.articlesItem[4]}</Link></li>
                 </ul>
             </div>
             <div className="visited">
@@ -89,7 +94,6 @@ componentWillMount(){
     }
 
 }
-BgFrameConponent.defaultProps = {
-};
+
 
 export default BgFrameConponent;
