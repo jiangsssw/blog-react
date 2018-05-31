@@ -1,5 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import Pubsub from 'pubsub-js'
+
+
+var Artlength;
 class BgFrameConponent extends React.Component{
 
     constructor(props){
@@ -20,7 +24,10 @@ componentWillMount(){
         for(let item in res){
             articlesTitle.push(res[item].title);
         }
-        
+        console.log(res.length)
+        //发布一个订阅时间，发布文章的数目
+        Artlength=res.length;
+        Pubsub.publish('ArticlesLength',Artlength);
         this.setState({
             
             articlesItem: articlesTitle
