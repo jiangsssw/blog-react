@@ -24,7 +24,6 @@ componentWillMount(){
         for(let item in res){
             articlesTitle.push(res[item].title);
         }
-        console.log(res.length)
         //发布一个订阅时间，发布文章的数目
         Artlength=res.length;
         Pubsub.publish('ArticlesLength',Artlength);

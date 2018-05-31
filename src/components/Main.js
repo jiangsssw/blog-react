@@ -13,6 +13,7 @@ import PictureShowComponent from './picture_show'
 import DemoComponent from './demo'
 import ManageArticlesComponent from './manageArtcles'
 import LoginComponent from '../page/login'
+import CheckComponent from './checkArticles'
 
 import '../styles/BgFrame.css'
 import '../styles/fontStyle.css'
@@ -27,6 +28,7 @@ class AppComponent extends React.Component {
         <BgFrameComponent/>
           <Switch>
               <Route exact path='/' component={ArticleComponent}/>
+              <Route path='/checkArticle' component={CheckComponent}/>
               <Route path='/leaveMessage' component={LeaveMessageComponent}/>
               <Route path='/writeArticles' component={WriteArticlesComponent}/>
               <Route path='/picture' component={PictureShowComponent}/>
