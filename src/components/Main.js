@@ -28,7 +28,7 @@ class AppComponent extends React.Component {
         <BgFrameComponent/>
           <Switch>
               <Route exact path='/' component={ArticleComponent}/>
-              <Route path='/checkArticle' component={CheckComponent}/>
+              <Route path='/checkArticle/:id' component={CheckComponent}/>
               <Route path='/leaveMessage' component={LeaveMessageComponent}/>
               <Route path='/writeArticles' component={WriteArticlesComponent}/>
               <Route path='/picture' component={PictureShowComponent}/>

@@ -13,6 +13,11 @@ class BgFrameConponent extends React.Component{
             idd:''
         }
     }
+    reflashLoad(e){
+        location.reload();
+        e.preventDefault();
+        e.stopPropagation();
+    }
 componentWillMount(){
     let articlesTitle=[]
     let articlesId=[]
@@ -75,7 +80,7 @@ componentWillMount(){
             <div className="recommend">
                 <label>推荐文章</label>
                 <ul className="aside_ul">
-                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[0]} >{this.state.articlesItem[0]}</Link></li>
+                    <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[0]}>{this.state.articlesItem[0]}</Link></li>
                     <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[1]} >{this.state.articlesItem[1]}</Link></li>
                     <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[2]} >{this.state.articlesItem[2]}</Link></li>
                     <li className="aside_title" ><Link to={'/checkArticle/$'+this.state.idd[3]} >{this.state.articlesItem[3]}</Link></li>

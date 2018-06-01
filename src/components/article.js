@@ -19,7 +19,6 @@ class ArticlesConpoment extends React.Component{
         }
     }
     getRefleshDataFromServer(url){
-        
         return fetch(url,{method:'get'}).then((res)=>{
             return res.json();
         }).then((res)=>{

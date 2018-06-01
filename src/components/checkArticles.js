@@ -1,18 +1,24 @@
 import React from 'react';
 import Pubsub from 'pubsub-js'
-
+var url;
 class CheckArticles extends React.Component{
     constructor(props){
         super(props);
         this.state={
             articleTitle:'',
             articleContent:'',
-            articleTime : ''
+            articleTime : '',
+            id : this.props.location.pathname.split('$')[1]
         }
     }
+
+   componentWillReceiveProps(nextProps){
+    var url = nextProps.location.pathname
+    location.reload(url);    // path/to/abc
+}
+   
     componentWillMount(){
-         var id= this.props.location.pathname.split('$')[1];
-         var url ='http://localhost:3000/articles/'+id
+          url ='http://localhost:3000/articles/'+this.state.id;
             fetch(url,{method:'get'}).then((res)=>{
                 return res.text();
             }).then((res)=>{
@@ -25,7 +31,8 @@ class CheckArticles extends React.Component{
                 this.setState({
                     articleTitle : resd.title,
                     articleContent : resd.content,
-                    articleTime : resd.time
+                    articleTime : resd.time,
+                    id : this.props.location.pathname.split('$')[1]
                 });
             });
        
