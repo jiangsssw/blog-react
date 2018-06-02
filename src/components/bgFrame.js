@@ -35,8 +35,10 @@ componentWillMount(){
         }
         //发布一个订阅时间，发布文章的数目
         Artlength=res.length;
+        var a = res.length;
         
-        Pubsub.publish('ArticlesLength',Artlength);
+        Pubsub.publish('ArticlesLengthTo',a);
+        this.props.readData(Artlength);
         this.setState({
             idd : articlesId,
             articlesItem: articlesTitle

@@ -98,24 +98,26 @@ class ArticlesConpoment extends React.Component{
             allArticles:Articles
         })
     });
-    Pubsub.subscribe('ArticlesLength',(msg,Artlength)=>{
-        lastpages=Math.ceil(Artlength/4);
-        this.setState({
-            pages:lastpages
-        });
+   Pubsub.subscribe('ArticlesLengthTo',(msg,a)=>{
+    lastpages = Math.ceil(a / 4);
+    this.setState({
+        pages: lastpages
     });
+   })
    }
-
-    componentWillUnmount(){
-        Pubsub.unsubscribe('ArticlesLength')
-    }
+componentWillReceiveProps(){
+    
+}
+   componentWillUnmount(){
+    Pubsub.unsubscribe('ArticlesLength');
+   }
     render(){
         return(
             <div>
                 <div className="main_content">
                     {this.state.allArticles}
                  <aside>
-                    <p>第<span id="page_number">{index}</span>页共{this.state.pages}页</p>
+                    <p>第<span id="page_number">{index}</span>页共{lastpages}页</p>
                     <div>
                         <button className="previous_page"onClick={this.getPrePage.bind(this)} disabled={this.state.Predisabled}>上一页</button>
                         <button className="article_next"onClick={this.getNextpage.bind(this)} disabled={this.state.Nextdisabled}>下一页</button>

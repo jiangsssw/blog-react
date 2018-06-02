@@ -18,22 +18,31 @@ import CheckComponent from './checkArticles'
 import '../styles/BgFrame.css'
 import '../styles/fontStyle.css'
 //let yeomanImage = require('../images/yeoman.png');
+var lengthData;
 
 class AppComponent extends React.Component {
+    readDataFromSon(length){
+      lengthData = length;
+    }
+
   render() {
     return (
       <div className="index">
       <Route exact path ='/login' component={LoginComponent}/>
         <div className="container">
-        <BgFrameComponent/>
+        <BgFrameComponent readData={this.readDataFromSon}/>
           <Switch>
-              <Route exact path='/' component={ArticleComponent}/>
+              <Route exact path='/'>
+                <ArticleComponent />
+              </Route>
               <Route path='/checkArticle/:id' component={CheckComponent}/>
               <Route path='/leaveMessage' component={LeaveMessageComponent}/>
               <Route path='/writeArticles' component={WriteArticlesComponent}/>
               <Route path='/picture' component={PictureShowComponent}/>
               <Route path='/demo' component={DemoComponent}/>
-              <Route path='/manage' component={ManageArticlesComponent}/>
+              <Route exact path='/manage' >
+                <ManageArticlesComponent data={lengthData}/>
+              </Route>
           </Switch>
         </div>
         <FooterCompontent />
