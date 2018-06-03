@@ -83,9 +83,7 @@ class MannageArticles extends React.Component {
         var api = 'http://localhost:3000/articles/'+id;
         fetch(api,{method : 'delete'}).then((res)=>{
             return res;
-        }).then((res)=>{
-            console.log(res);
-        });
+        }).then();
         var a = ReactDOM.findDOMNode(this.refs['articles'+id]);
        a.style.display='none';
         e.preventDefault();

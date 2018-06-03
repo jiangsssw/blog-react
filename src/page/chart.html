@@ -63,7 +63,6 @@
         font-size: 1.2em;
         padding: 5px 10px 5px 10px;
         max-width: 300px;
-        display: inline-block;
         right: 5px;
     }
     .input .shuru{
@@ -86,7 +85,6 @@
 <script>
     document.querySelector('.shuru').onkeyup=function (event) {
         if(event.keyCode==13&&event.target.value!=""){
-            console.log('促发了');
             chatWithRobot();
             event.target.value='';
         }

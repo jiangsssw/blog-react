@@ -180,13 +180,11 @@
             //判断相撞
             if(pad.collide(ball)){
                 ball.speedy*=-1;
-                console.log("碰挡板")
             }
             for (var i=0;i<bricks.length;i++){
                 var brick=bricks[i];
                 if(brick.break(ball)){
                     ball.speedy*=-1;
-                    console.log("碰砖块");
                     return count++;
                 }
                 if(count==10){

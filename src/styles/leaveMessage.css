@@ -1,5 +1,5 @@
 .suggestion{
-    width: 70%;
+    width: 75%;
     margin: auto;
 }
 .faker_name{
@@ -30,7 +30,7 @@
 .check_message{
     width: 100%;
     border: solid 1px #ECEDF1;
-    margin-top: 150px;
+    margin-top: 40px;
     background: #ECEDF1;
     font-size: 1em;
     border-radius: 10px;
