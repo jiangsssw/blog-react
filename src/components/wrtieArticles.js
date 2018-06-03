@@ -1,5 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
+import getTime from '../function/time'
+
 
 import '../styles/writeArticles.css'
 var id;
@@ -38,17 +40,6 @@ class WriteArticlesComponent extends React.Component {
        
     }
 
-    //获取当前时间
-    getTime() {
-        var time = new Date();
-        var year = time.getFullYear();
-        var month = time.getMonth()+1;
-        var hours = time.getHours();
-        var date = time.getDate()
-        var minutes =time.getMinutes();
-        var time_now=year+'年'+month+'月'+date+'日'+hours+':'+minutes;
-        return time_now;
-    }
 
     //点击提交数据
     submitClick(e){
@@ -69,7 +60,7 @@ class WriteArticlesComponent extends React.Component {
                 'title': subTitle,
                 'preview' : subPreview,
                 'content' : subContent,
-                'time' : this.getTime()
+                'time' : getTime()
             }
             var obj ={
                 method : type,
@@ -78,15 +69,22 @@ class WriteArticlesComponent extends React.Component {
                 },
                 body : JSON.stringify(data)
             }
+            
             fetch(url,obj).then((res)=>{
                 return res.json();
-            }).then();
+            }).then((res)=>{
+                var writeT= ReactDom.findDOMNode(this.refs.writeText);
+                var fish = ReactDom.findDOMNode(this.refs.fishing);
+                writeT.style.display = 'none';
+                fish.style.display = 'block';
+                return res;
+            });
         e.preventDefault();
         e.stopPropagation();
     }
     render() {
         return ( <div className="main_content">
-        <div className="write_text">
+        <div className="write_text" ref='writeText'>
             <article>
                 <h4>请输入文章标题</h4>
                 <input className="write_article_title" ref='writeTitle'/>
@@ -96,9 +94,9 @@ class WriteArticlesComponent extends React.Component {
                 <textarea className="write_content" ref='writeContet'>
                 </textarea>
             </article>
+            <button className="subbit" onClick={this.submitClick.bind(this)}>提交</button>
         </div>
-        <button className="subbit" onClick={this.submitClick.bind(this)}>提交</button>
-        <div className="fished">
+        <div className="fished" ref='fishing'>
             <a>OK,恭喜你提交成功</a>
         </div>
     </div>);

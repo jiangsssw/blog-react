@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Pubsub from 'pubsub-js'
 
-
 var Artlength;
 class BgFrameConponent extends React.Component{
 
