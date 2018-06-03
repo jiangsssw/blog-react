@@ -51,6 +51,7 @@ class MannageArticles extends React.Component {
         e.preventDefault();
         e.stopPropagation();
     }
+    //设置button是否能点击
     setButtonclick() {
         if (index == 1) {
             this.setState({
@@ -71,13 +72,20 @@ class MannageArticles extends React.Component {
             })
         }
     }
+    //跳转到修改文章的页面
     toAmendArticles(id, e) {
         location.href = '/writeArticles/$' + id
         e.preventDefault();
         e.stopPropagation();
     }
+    //删除文章
     toDeleteArticles(id, e) {
-    
+        var api = 'http://localhost:3000/articles/'+id;
+        fetch(api,{method : 'delete'}).then((res)=>{
+            return res;
+        }).then((res)=>{
+            console.log(res);
+        });
         var a = ReactDOM.findDOMNode(this.refs['articles'+id]);
        a.style.display='none';
         e.preventDefault();
@@ -125,7 +133,7 @@ componentWillUnmount(){
              </div>)} return (
             <div>
                 <div className="main_content">
-                    <div className="write_article"><button><a>写文章</a></button></div>
+                    <div className="write_article"><button><Link to='/writeArticles'>写文章</Link></button></div>
                     {Articles}
                     <aside>
                         <p>第<span id="page_number">{index}</span>页共{this.state.pages}页</p>
