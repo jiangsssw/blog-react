@@ -41,7 +41,6 @@ class AppComponent extends React.Component {
               <Route path='/picture' component={PictureShowComponent}/>
               <Route path='/demo' component={DemoComponent}/>
               <Route exact path='/manage' >
-                <BgFrameComponent/>
                 <ManageArticlesComponent data={lengthData}/>
               </Route>
           </Switch>

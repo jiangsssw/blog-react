@@ -36,10 +36,38 @@ class LoginComponent extends React.Component {
                     this.setState({
                         redirect : true
                     });
+                }else{
+                    console.log('密码错误');
+                    alert('密码错误');
                 }
+            }).catch((error)=>{
+                alert('密码错误')
+                return error;
             });
         e.preventDefault();
         e.stopPropagation();
+    }
+    componentWillMount(){
+        var url = 'http://localhost:3000/mange';
+        var ojbk = {
+            method : 'get',credentials: 'include',
+            headers : {
+                'Access-Control-Allow-Origin':'*'
+            },
+            credentials: 'include'
+        }
+        fetch(url,ojbk).then((res)=>{
+            return res;
+        }).then((res)=>{
+            if(res.status==200){
+                this.setState({
+                    redirect : true
+                });
+                console.log('管理员');
+            }else{
+                
+            }
+        });
     }
     render() {
         if (this.state.redirect) {

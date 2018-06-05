@@ -59,9 +59,10 @@ componentWillMount(){
             return res;
         }).then((res)=>{
             if(res.status==200){
-                this.setState({
-                    redirect : true
-                });
+                // this.setState({
+                //     redirect : true
+                // });
+                console.log(this.props.history);
             }else{
                 console.log('不是管理员');
             }
@@ -82,7 +83,7 @@ componentWillMount(){
             {/* 这里将li的开始标签和结束标签不写在一行是为了消除li之间存在空白字符的问题*/}
             <ul>
                 <li><Link to='/' >主页</Link>
-                </li><li><a onClick={this.isManage.bind(this)}>管理文章</a>
+                </li><li><Link to='/login'>管理文章</Link>
             </li><li><Link to="/leaveMessage" >留言</Link >
             </li><li><Link to="/picture" >图片</Link >
             </li><li><Link to="/demo" >小程序</Link >

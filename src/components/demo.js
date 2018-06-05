@@ -7,6 +7,11 @@ class DemoComponent extends React.Component {
 
     //展示game節點
     showthisagme(e){
+        fetch('http://localhost:3000/aaa/3',{method : 'get',credentials: 'include'}).then((res)=>{
+            return res.json()
+        }).then((res)=>{
+            console.log(res);
+        })
         var game = ReactDOM.findDOMNode(this.refs.game1);
         game.style.display = 'block';
         e.preventDefault();
@@ -21,6 +26,7 @@ class DemoComponent extends React.Component {
     }
     //展示chat節點
     showthischat(e){
+        console.log(this.props.history);
         var chatNode = ReactDOM.findDOMNode(this.refs.chatRobt);
         chatNode.style.display = 'block';
         e.preventDefault();
