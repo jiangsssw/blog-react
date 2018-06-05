@@ -19,7 +19,7 @@ class WriteArticlesComponent extends React.Component {
         id = index;
         if(index!=undefined && index!=null){
         var url = 'http://localhost:3000/articles/'+index;
-        fetch(url,{method : 'get'}).then((res)=>{
+        fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
             this.setState({
@@ -68,6 +68,7 @@ class WriteArticlesComponent extends React.Component {
                     'content-type' : 'application/json'
                 },
                 body : JSON.stringify(data)
+                ,credentials: 'include'
             }
             
             fetch(url,obj).then((res)=>{

@@ -1,7 +1,6 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link ,Redirect} from 'react-router-dom'
 import Pubsub from 'pubsub-js'
-
 var Artlength;
 class BgFrameConponent extends React.Component{
 
@@ -9,7 +8,8 @@ class BgFrameConponent extends React.Component{
         super(props);
         this.state={
             articlesItem: '11',
-            idd:''
+            idd:'',
+            redirect : false
         }
     }
     reflashLoad(e){
@@ -22,7 +22,8 @@ componentWillMount(){
     let articlesId=[]
     let obj={
         method:'get',
-        idd:''
+        idd:'',
+        credentials: 'include'
     }
     fetch('http://localhost:3000/articles',obj).then((res)=>{
         return res.json();
@@ -44,9 +45,36 @@ componentWillMount(){
         });
     })
 }
+//点击向服务器发送请求，验证是否为管理员，是则为其跳转到管理页面不是则跳转到登录界面
+    isManage(e){
+        var url = 'http://localhost:3000/mange';
+        var ojbk = {
+            method : 'get',credentials: 'include',
+            headers : {
+                'Access-Control-Allow-Origin':'*'
+            },
+            credentials: 'include'
+        }
+        fetch(url,ojbk).then((res)=>{
+            return res;
+        }).then((res)=>{
+            if(res.status==200){
+                this.setState({
+                    redirect : true
+                });
+            }else{
+                console.log('不是管理员');
+            }
+        });
+        e.preventDefault();
+        e.stopPropagation();
+    }
     render(){
+        if(this.state.redirect){
+        return <Redirect push to="/manage" />
+        }
         return (
-         <div>
+        <div>
         <header className="header">
             <h3>欢迎来到我的个人网站</h3>
         </header>
@@ -54,11 +82,11 @@ componentWillMount(){
             {/* 这里将li的开始标签和结束标签不写在一行是为了消除li之间存在空白字符的问题*/}
             <ul>
                 <li><Link to='/' >主页</Link>
-                </li><li><Link to='/manage'>管理文章</Link>
+                </li><li><a onClick={this.isManage.bind(this)}>管理文章</a>
             </li><li><Link to="/leaveMessage" >留言</Link >
             </li><li><Link to="/picture" >图片</Link >
             </li><li><Link to="/demo" >小程序</Link >
-            </li><li><a>网站介绍</a>
+            </li><li><Link to="/checkArticle/$3">网站介绍</Link>
             </li><li><Link to="/login">管理员登录</Link >
             </li>
             </ul>

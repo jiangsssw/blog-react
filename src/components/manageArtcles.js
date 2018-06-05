@@ -21,7 +21,7 @@ class MannageArticles extends React.Component {
         }
     }
     getRefleshDataFromServer(url) {
-        return fetch(url, { method: 'get' }).then((res) => {
+        return fetch(url, { method: 'get',credentials: 'include' }).then((res) => {
             return res.json();
         }).then((res) => {
             ArticlesDatas.splice(0,ArticlesDatas.length);
@@ -81,7 +81,7 @@ class MannageArticles extends React.Component {
     //删除文章
     toDeleteArticles(id, e) {
         var api = 'http://localhost:3000/articles/'+id;
-        fetch(api,{method : 'delete'}).then((res)=>{
+        fetch(api,{method : 'delete',credentials: 'include'}).then((res)=>{
             return res;
         }).then();
         var a = ReactDOM.findDOMNode(this.refs['articles'+id]);
@@ -92,7 +92,7 @@ class MannageArticles extends React.Component {
     componentWillMount() {
         this.setButtonclick();
 
-        fetch(url, { method: 'get' }).then((res) => {
+        fetch(url, { method: 'get',credentials: 'include' }).then((res) => {
             return res.json();
         }).then((res) => {
             

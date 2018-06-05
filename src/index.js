@@ -6,7 +6,7 @@ import Login from './page/login'
 import{BrowserRouter,Switch,Route} from 'react-router-dom';
 // Render the main component into the dom
 ReactDOM.render(
-                <BrowserRouter>
+                <BrowserRouter >
                   <Switch>
                       <Route path='/login' component={Login}/>
                       <App />

@@ -32,6 +32,7 @@ class LeaveMessageComponent extends React.Component {
                     'content-type': 'application/json'
                 },
                 body: JSON.stringify(data)
+                ,credentials: 'include'
             }
         var url = 'http://localhost:3000/suggestion';
         if (name.value !== '' && name.value !== undefined) {
@@ -65,7 +66,7 @@ class LeaveMessageComponent extends React.Component {
     }
     componentWillMount(){
         var url = 'http://localhost:3000/suggestion';
-        fetch(url,{method : 'get'}).then((res)=>{
+        fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
             for(let item in res){

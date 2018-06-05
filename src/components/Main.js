@@ -28,7 +28,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <div className="index">
-      <Route exact path ='/login' component={LoginComponent}/>
+      <Route  path ='/login' component={LoginComponent}/>
         <div className="container">
         <BgFrameComponent readData={this.readDataFromSon}/>
           <Switch>
@@ -41,6 +41,7 @@ class AppComponent extends React.Component {
               <Route path='/picture' component={PictureShowComponent}/>
               <Route path='/demo' component={DemoComponent}/>
               <Route exact path='/manage' >
+                <BgFrameComponent/>
                 <ManageArticlesComponent data={lengthData}/>
               </Route>
           </Switch>

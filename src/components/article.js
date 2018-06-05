@@ -19,7 +19,7 @@ class ArticlesConpoment extends React.Component{
         }
     }
     getRefleshDataFromServer(url){
-        return fetch(url,{method:'get'}).then((res)=>{
+        return fetch(url,{method:'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
             
@@ -78,9 +78,8 @@ class ArticlesConpoment extends React.Component{
         }
     }
   componentWillMount(){
-      this.setButtonclick();
-     
-    fetch(url,{method:'get'}).then((res)=>{
+    this._isMounted = true
+    fetch(url,{method:'get',credentials: 'include'}).then((res)=>{
         return res.json();
     }).then((res)=>{
         for(let item in res){
@@ -94,22 +93,24 @@ class ArticlesConpoment extends React.Component{
              </div>
             </div>);
         }
-        this.setState({
-            allArticles:Articles
-        })
+        if(this._isMounted){
+            this.setState({
+                allArticles:Articles
+            })
+        }
     });
-   Pubsub.subscribe('ArticlesLengthTo',(msg,a)=>{
-    lastpages = Math.ceil(a / 4);
-    this.setState({
-        pages: lastpages
-    });
-   })
+        this.setButtonclick();
+        Pubsub.subscribe('ArticlesLengthTo',(msg,a)=>{
+          lastpages = Math.ceil(a / 4);
+          this.setState({
+              pages: lastpages
+          });
+         });
    }
-componentWillReceiveProps(){
-    
-}
+ 
    componentWillUnmount(){
-    Pubsub.unsubscribe('ArticlesLength');
+    Pubsub.unsubscribe('ArticlesLengthTo');
+    this._isMounted = false
    }
     render(){
         return(
@@ -129,8 +130,27 @@ componentWillReceiveProps(){
         );
     }
 }
-
-
+//fetch 请求处理
+const makeCancelable = (promise) => {
+    let hasCanceled_ = false;
+  
+    const wrappedPromise = new Promise((resolve, reject) => {
+      promise.then((val) =>
+        hasCanceled_ ? reject({isCanceled: true}) : resolve(val)
+      );
+      promise.catch((error) =>
+        hasCanceled_ ? reject({isCanceled: true}) : reject(error)
+      );
+    });
+  
+    return {
+      promise: wrappedPromise,
+      cancel() {
+        hasCanceled_ = true;
+      },
+    };
+  };
+  
 
 ArticlesConpoment.defaultProps = {
 };

@@ -1,25 +1,66 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import ReactDOM from 'react-dom'
+import {Link,Redirect} from 'react-router-dom'
+
+
 import '../styles/login.css'
 class LoginComponent extends React.Component {
+    constructor(props){
+        super(props);
+        this.state={
+            redirect: false
+        }
+    }
+    //提交登录信息
+    loginInclick(e){
 
+        var nameNode = ReactDOM.findDOMNode(this.refs.username),
+            passwordNode = ReactDOM.findDOMNode(this.refs.password),
+            data = {
+                'name' : nameNode.value,
+                'userpassword': passwordNode.value
+            },
+            obj = {
+                method : 'post',
+                headers : {
+                    'content-type' : 'application/json'
+                },
+                body : JSON.stringify(data)
+                ,credentials: 'include'
+            },
+            url ='http://localhost:3000/enter';
+            fetch(url,obj).then((res)=>{
+                return res.json()
+            }).then((res)=>{
+                if(res.code=200){
+                    this.setState({
+                        redirect : true
+                    });
+                }
+            });
+        e.preventDefault();
+        e.stopPropagation();
+    }
     render() {
-       return ( <div className='login-body'>
+        if (this.state.redirect) {
+             return <Redirect push to="/manage" />; //or <Redirect push to="/sample?a=xxx&b=yyy" /> 传递更多参数
+        }
+        return ( <div className='login-body'>
        <div className="login">
-           <form method="post" action="/enter">
+            <form>
                <ul>
                    <li>
                        <span className="up_lable">登录名：</span>
-                       <input className="username" type="text" name="name" /></li>
+                       <input className="username" type="text" name="name"ref='username' /></li>
                    <li>
                        <span className="up_lable">密码:</span>
-                       <input className="userpassword" name="userpassword" type="password" /></li>
+                       <input className="userpassword" name="userpassword" ref='password' type="password" /></li>
                </ul>
                <div className="btn_group">
-                   <input type="submit" value="提交" />
+                   <input type="submit" value="登录"onClick={this.loginInclick.bind(this)} />
                </div>
-           </form>
            <button className="f_jump"><Link to='/'>返回主页</Link></button>
+           </form>
        </div>
    </div>);
     }
