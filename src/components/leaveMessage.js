@@ -34,7 +34,7 @@ class LeaveMessageComponent extends React.Component {
                 body: JSON.stringify(data)
                 ,credentials: 'include'
             }
-        var url = 'http://localhost:3000/suggestion';
+        var url = 'http://localhost:3000/sssWrite';
         if (name.value !== '' && name.value !== undefined) {
             if (email.value !== '' && email.value !== undefined) {
                 if (index > 0) {
@@ -65,7 +65,7 @@ class LeaveMessageComponent extends React.Component {
         e.stopPropagation();
     }
     componentWillMount(){
-        var url = 'http://localhost:3000/suggestion';
+        var url = 'http://localhost:3000/sss';
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{

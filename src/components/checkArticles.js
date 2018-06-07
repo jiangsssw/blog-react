@@ -18,7 +18,7 @@ class CheckArticles extends React.Component{
 }
    
     componentWillMount(){
-          url ='http://localhost:3000/articles/'+this.state.id;
+          url ='http://localhost:3000/aaa/'+this.state.id;
             fetch(url,{method:'get',credentials: 'include'}).then((res)=>{
                 return res.text();
             }).then((res)=>{

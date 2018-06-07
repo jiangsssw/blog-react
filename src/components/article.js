@@ -5,7 +5,7 @@ import Pubsub from 'pubsub-js'
 let Articles=[];
 let index = 1;
 var reflesh;
-var url = 'http://localhost:3000/articles?_page='+index+'&_limit=4';
+var url = 'http://localhost:3000/look/'+index;
 var lastpages;
 var id;
 class ArticlesConpoment extends React.Component{
@@ -44,7 +44,7 @@ class ArticlesConpoment extends React.Component{
     getNextpage(e){
         reflesh=[];
         index++;
-        url='http://localhost:3000/articles?_page='+index+'&_limit=4';
+        url='http://localhost:3000/look/'+index;;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -52,7 +52,7 @@ class ArticlesConpoment extends React.Component{
     }
     getPrePage(e){
         index--;
-        url='http://localhost:3000/articles?_page='+index+'&_limit=4';
+        url='http://localhost:3000/look/'+index;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();

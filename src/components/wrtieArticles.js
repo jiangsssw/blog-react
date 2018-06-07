@@ -18,7 +18,7 @@ class WriteArticlesComponent extends React.Component {
         var index = location.href.split('$')[1];
         id = index;
         if(index!=undefined && index!=null){
-        var url = 'http://localhost:3000/articles/'+index;
+        var url = 'http://localhost:3000/aaa/'+index;
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{

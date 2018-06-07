@@ -25,7 +25,7 @@ componentWillMount(){
         idd:'',
         credentials: 'include'
     }
-    fetch('http://localhost:3000/articles',obj).then((res)=>{
+    fetch('http://localhost:3000/aaa/',obj).then((res)=>{
         return res.json();
     }).then((res)=>{
         // console.log(res[2].title);

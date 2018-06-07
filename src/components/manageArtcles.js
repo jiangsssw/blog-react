@@ -6,7 +6,7 @@ import Pubsub from 'pubsub-js'
 var  Articles = [];
 let ArticlesDatas = []
 var  index = 1;
-var url = 'http://localhost:3000/articles?_page=' + index + '&_limit=4';
+var url = 'http://localhost:3000/look/'+index
 var lastpages;
 var id;
 class MannageArticles extends React.Component {
@@ -37,7 +37,7 @@ class MannageArticles extends React.Component {
     getNextpage(e) {
         index++;
        this.setButtonclick();
-        url = 'http://localhost:3000/articles?_page=' + index + '&_limit=4';
+        url = 'http://localhost:3000/look/' + index ;
         this.getRefleshDataFromServer(url);
         
         e.preventDefault();
@@ -45,7 +45,7 @@ class MannageArticles extends React.Component {
     }
     getPrePage(e) {
         index--;
-        url = 'http://localhost:3000/articles?_page=' + index + '&_limit=4';
+        url = 'http://localhost:3000/look/' + index ;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -80,7 +80,7 @@ class MannageArticles extends React.Component {
     }
     //删除文章
     toDeleteArticles(id, e) {
-        var api = 'http://localhost:3000/articles/'+id;
+        var api = 'http://localhost:3000/ddd/'+id;
         fetch(api,{method : 'delete',credentials: 'include'}).then((res)=>{
             return res;
         }).then();
