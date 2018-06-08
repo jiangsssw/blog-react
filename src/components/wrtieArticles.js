@@ -50,10 +50,10 @@ class WriteArticlesComponent extends React.Component {
             subPreview = writePreview.value,
             subContent = writeContet.value;
             if(id==undefined) {
-                var url = 'http://localhost:3000/articles/';
+                var url = 'http://localhost:3000/write';
                 var type = 'post';
             }else{
-                var url = 'http://localhost:3000/articles/'+id;
+                var url = 'http://localhost:3000/aaa/'+id;
                 var type = 'put';
             }
             var data = {

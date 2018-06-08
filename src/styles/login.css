@@ -14,7 +14,7 @@ ul,li{
 .login{
     position: absolute;
     width: 40%;
-    height: 30%;
+    height: 220px;
     border: solid 1px black;
     top: 35%;
     left: 30%;
@@ -25,26 +25,40 @@ ul,li{
 }
 .login ul{
     position: relative;
-    top: 30%;
-    left: 30%;
+    top:25px;
+    left: 20%;
 }
 .login ul li{
     font-size: 1.3em;
 }
 .btn_group{
     position: relative;
-    top: 25px;
-    left: 65%;
+    top: 75px;
+    left: 58%;
 }
-.btn_group button{
+.btn_group input{
+    background-color: antiquewhite;
+    width: 74px;
     margin-left: 20px;
+    height: 27px;
 }
 .btn_group button a{
     text-decoration: none;
     font-size: 1.5em;
 }
 .f_jump{
-    margin-left: 240px;
+    margin-left: 200px;
+    background-color: antiquewhite;
+    width: 72px;
+    margin-top: 48px;
+    height: 25px;
+   line-height: 23px;
+}
+.f_jump a{
+    text-decoration: none;
+}
+.f_jump:hover{
+    border: 1px solid green;
 }
 .up_lable{
     width: 85px;

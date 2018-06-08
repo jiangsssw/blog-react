@@ -9,7 +9,8 @@ class BgFrameConponent extends React.Component{
         this.state={
             articlesItem: '11',
             idd:'',
-            redirect : false
+            redirect : false,
+            count : '1'
         }
     }
     reflashLoad(e){
@@ -44,6 +45,14 @@ componentWillMount(){
             articlesItem: articlesTitle
         });
     })
+    //获取count的值
+    fetch('http://localhost:3000/fasong',{method:'get', credentials: 'include'}).then((res)=>{
+        return res.text()
+    }).then((res)=>{
+        this.setState({
+            count : res
+        });
+    })
 }
 //点击向服务器发送请求，验证是否为管理员，是则为其跳转到管理页面不是则跳转到登录界面
     isManage(e){
@@ -62,9 +71,8 @@ componentWillMount(){
                 // this.setState({
                 //     redirect : true
                 // });
-                console.log(this.props.history);
             }else{
-                console.log('不是管理员');
+                //不是管理员
             }
         });
         e.preventDefault();
@@ -119,7 +127,7 @@ componentWillMount(){
             </div>
             <div className="visited">
                 <div>
-                    <a>本网站访问次数:<span id="counts">显示访问人数</span></a>
+                    <a>本网站访问次数:<span id="counts">{this.state.count}</span></a>
                 </div>
             </div>
         </div>

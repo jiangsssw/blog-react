@@ -31,6 +31,13 @@
     font-size: 1em;
     font-family: 微软雅黑;
 }
+.recommend ul li a{
+    text-decoration-line: none;
+}
+.recommend ul li a:hover{
+    text-decoration-line: underline;
+    color: #e58c7c;
+}
 .recommend ul li:hover{
     color: palevioletred;
     cursor: pointer;
@@ -42,8 +49,10 @@
 .article_title a{
     font-family: 微软雅黑;
     font-size: 1.2em;
+    text-decoration-line: none;
 }
 .article_title a:hover{
+    text-decoration-line: underline;
     cursor: pointer;
      color: #e58c7c;
 }

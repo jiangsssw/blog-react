@@ -32,12 +32,11 @@ class LoginComponent extends React.Component {
             fetch(url,obj).then((res)=>{
                 return res.json()
             }).then((res)=>{
-                if(res.code=200){
+                if(res.code=501){
                     this.setState({
                         redirect : true
                     });
                 }else{
-                    console.log('密码错误');
                     alert('密码错误');
                 }
             }).catch((error)=>{
@@ -59,11 +58,11 @@ class LoginComponent extends React.Component {
         fetch(url,ojbk).then((res)=>{
             return res;
         }).then((res)=>{
-            if(res.status==200){
+            if(res.status==500){
                 this.setState({
                     redirect : true
                 });
-                console.log('管理员');
+               
             }else{
                 
             }
@@ -87,7 +86,7 @@ class LoginComponent extends React.Component {
                <div className="btn_group">
                    <input type="submit" value="登录"onClick={this.loginInclick.bind(this)} />
                </div>
-           <button className="f_jump"><Link to='/'>返回主页</Link></button>
+                  <div className="f_jump"><Link to='/'>返回主页</Link></div>
            </form>
        </div>
    </div>);
