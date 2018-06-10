@@ -14,6 +14,7 @@ import DemoComponent from './demo'
 import ManageArticlesComponent from './manageArtcles'
 import LoginComponent from '../page/login'
 import CheckComponent from './checkArticles'
+import manageSuggestion from './manageSuggestion'
 
 import '../styles/BgFrame.css'
 import '../styles/fontStyle.css'
@@ -43,6 +44,7 @@ class AppComponent extends React.Component {
               <Route exact path='/manage' >
                 <ManageArticlesComponent data={lengthData}/>
               </Route>
+              <Route path='/managesuggestion' component={manageSuggestion}/>
           </Switch>
         </div>
         <FooterCompontent />

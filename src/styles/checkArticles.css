@@ -1,0 +1,31 @@
+
+.artContent{
+    font-size: 1.2em;
+    color: #000000b8;
+}
+.articleTime{
+    color: #888888;
+    font-size: 1.0em
+}
+.contentText{
+    width: 90%;
+    border: solid 1px #fafafa;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    margin-left: 5%;
+    margin-top: 15px;
+    background-color: #fafafa;
+}
+.contentText article{
+    border-radius: 10px;
+    background-color: #ECEDF1;
+    box-shadow: 1px 1px 1px #888888;
+    min-height: 400px;
+}
+/* .articleTitle{
+
+} */
+.articleContent{
+    padding: 20px 20px 10px 20px;
+    border-top: 2px solid white;
+}

@@ -6,9 +6,10 @@
     margin-top: 40px;
 }
 .faker_name ul li {
-    line-height: 3em;
+    line-height: 2em;
     font-family: 微软雅黑;
-    font-size: 1.2em
+    font-size: 1.2em;
+    margin-top: 10px;
 }
 .message_text{
     margin-top: 30px;
@@ -34,6 +35,7 @@
     background: #ECEDF1;
     font-size: 1em;
     border-radius: 10px;
+    padding-left: 20px;
 }
 .check_message .someone{
     margin-top: 30px;
@@ -45,4 +47,13 @@
     font-size: 1em;
     font-family: 新宋体;
 
+}
+.delete-suggestion{
+    width: 100px;
+    height: 25px;
+    cursor: pointer;
+    color: aliceblue;
+    background-color: #f70909;
+    text-align: center;
+    opacity: .6;
 }

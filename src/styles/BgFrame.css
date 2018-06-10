@@ -48,6 +48,7 @@ html,ul,li,a,p.div,span,button,label,head{
     border-radius: 10px;
     display: inline-block;
     background-color: #ECEDF1;
+    box-shadow: 1px 1px 1px #888888;
 }
 .buddha{
     width: 100%;
@@ -109,26 +110,26 @@ html,ul,li,a,p.div,span,button,label,head{
 }
 .text article{
     border-radius: 10px;
+    height: 200px;
+    background-color: #ECEDF1;
+    box-shadow: 1px 1px 1px #888888;
 }
 .text .article_title{
-    border:solid 1px #fafafa;
     width: 100%;
     margin: auto;
-    height: 40px;
+    height: 30px;
     background: #ECEDF1;
     font-family: 微软雅黑;
     font-size: 1.4em;
-    margin-bottom: 5px;
-    border-radius: 10px;
 }
 .text .article_preview_content{
-    border:solid 1px #fafafa;
     border-radius: 10px;
     width: 100%;
     margin: auto;
     background-color: #ECEDF1;
-    font-size: 1.2em;
+    font-size: 1em;
     font-family: 新宋体;
+    color: #0c0c0ca1;
 }
 .main_content aside{
     width: 300px;
@@ -166,12 +167,39 @@ html,ul,li,a,p.div,span,button,label,head{
 .Manage_articles:first-child{
     display: none;
 }
-.write_article button{
-    width: 30%;
+.write_article .xieArticles{
+    width: 35%;
     height: 50px;
-    margin: auto;
+    /* margin: auto; */
     position: relative;
     left: 30%;
+    text-align: center;
+    background: blanchedalmond;
+    font-size: 1.2em;
+    line-height: 50px;
+    text-decoration: none;
+}
+.write_article .shanSuggestion{
+    width: 35%;
+    height: 50px;
+    /* margin: auto; */
+    position: relative;
+    left: 30%;
+    text-align: center;
+    background: blanchedalmond;
+    font-size: 1.2em;
+    margin-top: 10px;
+    line-height: 50px;
+    text-decoration: none;
+}
+.write_article .shanSuggestion a{
+    text-decoration: none;
+}
+.write_article .xieArticles a{
+    text-decoration: none;
+}
+.write_article{
+    width: 100%
 }
 .active{
     color: palevioletred;
@@ -184,6 +212,29 @@ html,ul,li,a,p.div,span,button,label,head{
     background-color: #ECEDF1;
     font-size: 1.2em;
     font-family: 新宋体;
+}
+.date{
+    margin-top: 45px;
+    margin-left: 20px;
+}
+.amendeArticle{
+    border:0px;
+    width: 95px;
+    height: 30px;
+    background-color: #0b85ec;
+    opacity: .66;
+    cursor: pointer;
+    margin-left: 20px
+}
+.deleteArticle{
+    border:0px;
+    width: 95px;
+    height: 30px;
+    background-color: #f70909;
+    opacity: .7;
+    margin-left: 570px;
+    color: aliceblue;
+    cursor: pointer;
 }
 
 

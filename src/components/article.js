@@ -5,7 +5,7 @@ import Pubsub from 'pubsub-js'
 let Articles=[];
 let index = 1;
 var reflesh;
-var url = 'http://localhost:3000/look/'+index;
+var url = 'http://wangjiang1996.applinzi.com/look/'+index;
 var lastpages;
 var id;
 class ArticlesConpoment extends React.Component{
@@ -24,13 +24,15 @@ class ArticlesConpoment extends React.Component{
         }).then((res)=>{
             
             for(let item in res){
-                id=res[item].id;
+                // id=res[item].id;
+                var articleContent=res[item].content.substr(0,150);
                 reflesh[item]=( <div key={res[item].id}>
                 <div className="muban" >
                 <div className="text">
                     <article>
                         <div className="article_title"><Link to={'/checkArticle/$'+res[item].id}>{res[item].title}</Link></div>
-                        <div className="article_preview_content"><p>{res[item].preview}</p></div>
+                        <div className="article_preview_content"><p>&nbsp;&nbsp;{articleContent}...</p></div>
+                        <div className="date">时间：{res[item].time}</div>
                     </article>
                  </div>
                 </div>
@@ -44,7 +46,7 @@ class ArticlesConpoment extends React.Component{
     getNextpage(e){
         reflesh=[];
         index++;
-        url='http://localhost:3000/look/'+index;
+        url='http://wangjiang1996.applinzi.com/look/'+index;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -52,7 +54,7 @@ class ArticlesConpoment extends React.Component{
     }
     getPrePage(e){
         index--;
-        url='http://localhost:3000/look/'+index;
+        url='http://wangjiang1996.applinzi.com/look/'+index;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -83,12 +85,14 @@ class ArticlesConpoment extends React.Component{
         return res.json();
     }).then((res)=>{
         for(let item in res){
+            var articleContent=res[item].content.substr(0,150);
             id=res[item].id;
             Articles[item]=( <div className="muban" key={res[item].id}>
             <div className="text">
                 <article>
                     <div className="article_title"><Link to={'/checkArticle/$'+res[item].id} >{res[item].title}</Link></div>
-                    <div className="article_preview_content"><p>{res[item].preview}</p></div>
+                    <div className="article_preview_content"><p>&nbsp;&nbsp;{articleContent}...</p></div>
+                    <div className="date">时间：{res[item].time}</div>
                 </article>
              </div>
             </div>);

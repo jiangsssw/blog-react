@@ -32,10 +32,12 @@
     font-family: 微软雅黑;
 }
 .recommend ul li a{
-    text-decoration-line: none;
+    text-decoration: none;
+    color: #1a3ea5;
+    opacity: .8;
 }
 .recommend ul li a:hover{
-    text-decoration-line: underline;
+    text-decoration: underline;
     color: #e58c7c;
 }
 .recommend ul li:hover{
@@ -49,10 +51,12 @@
 .article_title a{
     font-family: 微软雅黑;
     font-size: 1.2em;
-    text-decoration-line: none;
+    text-decoration: none;
+    color: #1a3ea5;
+    opacity: .8;
 }
 .article_title a:hover{
-    text-decoration-line: underline;
+    text-decoration: underline;
     cursor: pointer;
      color: #e58c7c;
 }

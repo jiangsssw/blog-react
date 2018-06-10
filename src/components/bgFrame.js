@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link ,Redirect} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import ReactDOM from 'react-dom'
 import Pubsub from 'pubsub-js'
 var Artlength;
 class BgFrameConponent extends React.Component{
@@ -10,7 +11,8 @@ class BgFrameConponent extends React.Component{
             articlesItem: '11',
             idd:'',
             redirect : false,
-            count : '1'
+            count : '1',
+            style: {}
         }
     }
     reflashLoad(e){
@@ -26,7 +28,7 @@ componentWillMount(){
         idd:'',
         credentials: 'include'
     }
-    fetch('http://localhost:3000/aaa/',obj).then((res)=>{
+    fetch('http://wangjiang1996.applinzi.com/aaa/',obj).then((res)=>{
         return res.json();
     }).then((res)=>{
         // console.log(res[2].title);
@@ -46,7 +48,7 @@ componentWillMount(){
         });
     })
     //获取count的值
-    fetch('http://localhost:3000/fasong',{method:'get', credentials: 'include'}).then((res)=>{
+    fetch('http://wangjiang1996.applinzi.com/fasong',{method:'get', credentials: 'include'}).then((res)=>{
         return res.text()
     }).then((res)=>{
         this.setState({
@@ -55,33 +57,61 @@ componentWillMount(){
     })
 }
 //点击向服务器发送请求，验证是否为管理员，是则为其跳转到管理页面不是则跳转到登录界面
-    isManage(e){
-        var url = 'http://localhost:3000/mange';
-        var ojbk = {
-            method : 'get',credentials: 'include',
-            headers : {
-                'Access-Control-Allow-Origin':'*'
-            },
-            credentials: 'include'
+    // isManage(e){
+    //     var url = 'http://wangjiang1996.applinzi.com/mange';
+    //     var ojbk = {
+    //         method : 'get',credentials: 'include',
+    //         headers : {
+    //             'Access-Control-Allow-Origin':'*'
+    //         },
+    //         credentials: 'include'
+    //     }
+    //     fetch(url,ojbk).then((res)=>{
+    //         return res;
+    //     }).then((res)=>{
+    //         if(res.status==600){
+    //             // this.setState({
+    //             //     redirect : true
+    //             // });
+    //         }else{
+    //             console.log('不是管理员')
+    //         }
+    //     });
+    //     e.preventDefault();
+    //     e.stopPropagation();
+    // }
+    scrollHandler = this.handleScroll.bind(this);
+    componentDidMount(){
+        //监听页面滚动事件
+        window.addEventListener('scroll', this.scrollHandler);
+    }
+    componentWillUnmount(){
+        window.removeEventListener('scroll',this.scrollHandler,false)
+    }
+    handleScroll(e){
+        var scrollTop = e.srcElement.documentElement.scrollTop;
+        var slider = ReactDOM.findDOMNode(this.refs.siderBar);
+        var sliderOffsetTop = slider.offsetTop ;
+        var a = sliderOffsetTop - scrollTop;
+        // console.log(a);
+        if(a<8){
+            this.setState({
+                style : {
+                    position : 'fixed',
+                    top : 0 + 'px',
+                    left : 160+ 'px',
+                    width : 290 + 'px'
+                }
+            });
         }
-        fetch(url,ojbk).then((res)=>{
-            return res;
-        }).then((res)=>{
-            if(res.status==200){
-                // this.setState({
-                //     redirect : true
-                // });
-            }else{
-                //不是管理员
-            }
-        });
-        e.preventDefault();
-        e.stopPropagation();
+        if(a>-137){
+            this.setState({
+                style : {
+                }
+            });
+        }
     }
     render(){
-        if(this.state.redirect){
-        return <Redirect push to="/manage" />
-        }
         return (
         <div>
         <header className="header">
@@ -100,7 +130,7 @@ componentWillMount(){
             </li>
             </ul>
         </div>
-        <div className="sidebar">
+        <div className="sidebar" style={this.state.style} ref="siderBar">
             <div className="buddha">
                 <div className="buddha_pic">
 

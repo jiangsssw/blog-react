@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Link } from 'react-router-dom'
+import { Link,Redirect} from 'react-router-dom'
 import Pubsub from 'pubsub-js'
 
 var  Articles = [];
 let ArticlesDatas = []
 var  index = 1;
-var url = 'http://localhost:3000/look/'+index
+var url = 'http://wangjiang1996.applinzi.com/look/'+index
 var lastpages;
 var id;
 class MannageArticles extends React.Component {
@@ -17,7 +17,9 @@ class MannageArticles extends React.Component {
             pages: '',
             Predisabled: '',
             Nextdisabled: '',
-            isDisplay: ''
+            isDisplay: '',
+            isId : '',
+            isRedirect: false
         }
     }
     getRefleshDataFromServer(url) {
@@ -37,7 +39,7 @@ class MannageArticles extends React.Component {
     getNextpage(e) {
         index++;
        this.setButtonclick();
-        url = 'http://localhost:3000/look/' + index ;
+        url = 'http://wangjiang1996.applinzi.com/look/' + index ;
         this.getRefleshDataFromServer(url);
         
         e.preventDefault();
@@ -45,7 +47,7 @@ class MannageArticles extends React.Component {
     }
     getPrePage(e) {
         index--;
-        url = 'http://localhost:3000/look/' + index ;
+        url = 'http://wangjiang1996.applinzi.com/look/' + index ;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -74,13 +76,16 @@ class MannageArticles extends React.Component {
     }
     //跳转到修改文章的页面
     toAmendArticles(id, e) {
-        location.href = '/writeArticles/$' + id
+        this.setState({
+            isId : id,
+            isRedirect : true
+        });
         e.preventDefault();
         e.stopPropagation();
     }
     //删除文章
     toDeleteArticles(id, e) {
-        var api = 'http://localhost:3000/ddd/'+id;
+        var api = 'http://wangjiang1996.applinzi.com/ddd/'+id;
         fetch(api,{method : 'delete',credentials: 'include'}).then((res)=>{
             return res;
         }).then();
@@ -117,21 +122,27 @@ componentWillUnmount(){
         var time;
         Articles.splice(0,Articles.length)
         for(let item in art){
-            time = 100*Math.random()+item
+            time = 100*Math.random()+item;
+            var articleContent=art[item].content.substr(0,150);
             Articles[item]=(<div className="muban" key={time}
              ref={'articles'+art[item].id}>
                <div className="text">
                      <article>
-                         <label onClick={this.toAmendArticles.bind(this, art[item].id)}><input type="button" value="修改" /></label>
-                         <label onClick={this.toDeleteArticles.bind(this, art[item].id)}><input type="button" value="删除" /></label><span className="isDelete"></span>
+                         <label onClick={this.toAmendArticles.bind(this, art[item].id)}><input className="amendeArticle" type="button" value="修改" /></label>
+                         <label onClick={this.toDeleteArticles.bind(this, art[item].id)}><input className="deleteArticle" type="button" value="删除" /></label><span className="isDelete"></span>
                          <div className="article_title"><Link to={'/checkArticle/$' + art[item].id} >{art[item].title}</Link></div>
-                         <div className="article_preview_content"><p>{art[item].preview}</p></div>
+                         <div className="article_preview_content"><p>{articleContent}</p></div>
                      </article>
                  </div>
-             </div>)} return (
+             </div>)}
+             if(this.state.isRedirect){
+                 return <Redirect push to={'/writeArticles/$' + this.state.isId} />;
+             }
+             return (
             <div>
                 <div className="main_content">
-                    <div className="write_article"><button><Link to='/writeArticles'>写文章</Link></button></div>
+                    <div className="write_article"><div className="xieArticles"><Link to='/writeArticles'>写文章</Link></div></div>
+                    <div className="write_article"><div className="shanSuggestion"><Link to='/managesuggestion'>管理留言</Link></div></div>
                     {Articles}
                     <aside>
                         <p>第<span id="page_number">{index}</span>页共{this.state.pages}页</p>

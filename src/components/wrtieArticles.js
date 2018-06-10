@@ -18,7 +18,7 @@ class WriteArticlesComponent extends React.Component {
         var index = location.href.split('$')[1];
         id = index;
         if(index!=undefined && index!=null){
-        var url = 'http://localhost:3000/aaa/'+index;
+        var url = 'http://wangjiang1996.applinzi.com/aaa/'+index;
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
@@ -28,10 +28,8 @@ class WriteArticlesComponent extends React.Component {
                 articleContent : res.content
             });
             var title = ReactDom.findDOMNode(this.refs.writeTitle),
-            writePreview = ReactDom.findDOMNode(this.refs.writePreview),
             writeContet = ReactDom.findDOMNode(this.refs.writeContet);
             title.value= this.state.articleTitle;
-            writePreview.value = this.state.articlePreview;
             writeContet.value = this.state.articleContent;
         })
     }
@@ -44,21 +42,18 @@ class WriteArticlesComponent extends React.Component {
     //点击提交数据
     submitClick(e){
         var title = ReactDom.findDOMNode(this.refs.writeTitle),
-        writePreview = ReactDom.findDOMNode(this.refs.writePreview),
         writeContet = ReactDom.findDOMNode(this.refs.writeContet);
         var subTitle = title.value,
-            subPreview = writePreview.value,
             subContent = writeContet.value;
             if(id==undefined) {
-                var url = 'http://localhost:3000/write';
+                var url = 'http://wangjiang1996.applinzi.com/write';
                 var type = 'post';
             }else{
-                var url = 'http://localhost:3000/aaa/'+id;
+                var url = 'http://wangjiang1996.applinzi.com/aaa/'+id;
                 var type = 'put';
             }
             var data = {
                 'title': subTitle,
-                'preview' : subPreview,
                 'content' : subContent,
                 'time' : getTime()
             }
@@ -89,8 +84,6 @@ class WriteArticlesComponent extends React.Component {
             <article>
                 <h4>请输入文章标题</h4>
                 <input className="write_article_title" ref='writeTitle'/>
-                <h4>预览内容</h4>
-                <textarea className="write_article_preview_content" ref='writePreview'></textarea>
                 <h4>输入内容</h4>
                 <textarea className="write_content" ref='writeContet'>
                 </textarea>

@@ -18,6 +18,7 @@ class LeaveMessageComponent extends React.Component {
         var name = ReactDOM.findDOMNode(this.refs.writeName),
             email = ReactDOM.findDOMNode(this.refs.writeEmail),
             suggestionDom = ReactDOM.findDOMNode(this.refs.writeSuggestion),
+            fishedDom = ReactDOM.findDOMNode(this.refs.fished0),
             info = ReactDOM.findDOMNode(this.refs.writeInfor);
         var index = email.value.indexOf('@'),
             data = {
@@ -33,8 +34,10 @@ class LeaveMessageComponent extends React.Component {
                 },
                 body: JSON.stringify(data)
                 ,credentials: 'include'
-            }
-        var url = 'http://localhost:3000/sssWrite';
+            };
+            suggestionDom.style.display = 'none';
+            fishedDom.style.display = 'block';
+        var url = 'http://wangjiang1996.applinzi.com/sssWrite';
         if (name.value !== '' && name.value !== undefined) {
             if (email.value !== '' && email.value !== undefined) {
                 if (index > 0) {
@@ -47,7 +50,10 @@ class LeaveMessageComponent extends React.Component {
                              this.setState({
                                 leaveMessage : Message
                              });
-                             suggestionDom.style.display = 'none';
+                             setTimeout(() => {
+                                fishedDom.style.display = 'none';
+                             }, 2000);
+                             
                         });
                     } else {
                         alert('建议不能为空')
@@ -65,10 +71,11 @@ class LeaveMessageComponent extends React.Component {
         e.stopPropagation();
     }
     componentWillMount(){
-        var url = 'http://localhost:3000/sss';
+        var url = 'http://wangjiang1996.applinzi.com/sss';
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
+            Message.splice(0,Message.length)
             for(let item in res){
                 Message.unshift(res[item]);
             }
@@ -81,7 +88,8 @@ class LeaveMessageComponent extends React.Component {
         var LMessages = this.state.leaveMessage,
              messageData = [];
         for(let item in LMessages){
-            messageData.push( <div className="someone" key={LMessages[item].id}>
+            var random = 10000*Math.random()
+            messageData.push( <div className="someone" key={LMessages[item].id+random}>
                                 <li><strong>呢称：</strong>{LMessages[item].fakername}</li>
                                 <p>{LMessages[item].message}</p>
                                 <li><small>时间:{LMessages[item].time}</small></li>
@@ -112,12 +120,13 @@ class LeaveMessageComponent extends React.Component {
                         </div>
                     </div>
                     <button className="put_in" onClick={this.subMitClick.bind(this)}>提交</button>
-                    <div className="fished">
+                    </div>
+                    <div className="fished" ref="fished0">
                         <a>OK,恭喜你提交成功，感谢您的建议。3秒后返回。。</a>
                         <div className="success_pic">
                         </div>
                     </div>
-                    </div>
+                    
                     <div className="check_message">
                         <span>留言板</span>
                        {messageData}

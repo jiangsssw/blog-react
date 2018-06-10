@@ -28,7 +28,7 @@ class LoginComponent extends React.Component {
                 body : JSON.stringify(data)
                 ,credentials: 'include'
             },
-            url ='http://localhost:3000/enter';
+            url ='http://wangjiang1996.applinzi.com/enter';
             fetch(url,obj).then((res)=>{
                 return res.json()
             }).then((res)=>{
@@ -47,7 +47,7 @@ class LoginComponent extends React.Component {
         e.stopPropagation();
     }
     componentWillMount(){
-        var url = 'http://localhost:3000/mange';
+        var url = 'http://wangjiang1996.applinzi.com/mange';
         var ojbk = {
             method : 'get',credentials: 'include',
             headers : {
@@ -56,9 +56,9 @@ class LoginComponent extends React.Component {
             credentials: 'include'
         }
         fetch(url,ojbk).then((res)=>{
-            return res;
+            return res.text();
         }).then((res)=>{
-            if(res.status==500){
+            if(res==601){
                 this.setState({
                     redirect : true
                 });

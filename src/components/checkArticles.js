@@ -1,5 +1,6 @@
 import React from 'react';
 import Pubsub from 'pubsub-js'
+import '../styles/checkArticles.css'
 var url;
 class CheckArticles extends React.Component{
     constructor(props){
@@ -18,7 +19,7 @@ class CheckArticles extends React.Component{
 }
    
     componentWillMount(){
-          url ='http://localhost:3000/aaa/'+this.state.id;
+          url ='http://wangjiang1996.applinzi.com/aaa/'+this.state.id;
             fetch(url,{method:'get',credentials: 'include'}).then((res)=>{
                 return res.text();
             }).then((res)=>{
@@ -42,16 +43,16 @@ class CheckArticles extends React.Component{
     }
     render(){
         return (<div className="main_content">
-        <div className="muban">
-            <div className="text">
+        <div className="mainContent">
+            <div className="contentText">
                 <article>
-                    <div className="article_title"><a>{this.state.articleTitle}</a></div>
-                    <div className="article_content">
+                    <div className="articleTitle"><a><h2>{this.state.articleTitle}</h2></a></div>
+                    <div className="articleContent">
                     <p className="articleTime"> {this.state.articleTime}</p>
                     {/* 由于获取的数据带有\n的换行符，而react不能转译（或者我没有找到转译的方法），前面用正则将\n替换成了<br/>替代，
                         然后用dangerouslySetInnerHTML属性，这样又带来了一个安全问题，很容易受到代码注入
                     */}
-                    <p dangerouslySetInnerHTML={{__html:this.state.articleContent}}></p>
+                    <p className="artContent" dangerouslySetInnerHTML={{__html:this.state.articleContent}}></p>
                     </div>
                 </article>
             </div>
