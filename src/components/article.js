@@ -1,11 +1,12 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 import Pubsub from 'pubsub-js'
+import api from '../config/api';
 
 let Articles=[];
 let index = 1;
 var reflesh;
-var url = 'http://wangjiang1996.applinzi.com/look/'+index;
+var url = api+'/look/'+index;
 var lastpages;
 var id;
 class ArticlesConpoment extends React.Component{
@@ -46,7 +47,7 @@ class ArticlesConpoment extends React.Component{
     getNextpage(e){
         reflesh=[];
         index++;
-        url='http://wangjiang1996.applinzi.com/look/'+index;
+        url=api+'/look/'+index;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -54,7 +55,7 @@ class ArticlesConpoment extends React.Component{
     }
     getPrePage(e){
         index--;
-        url='http://wangjiang1996.applinzi.com/look/'+index;
+        url=api+'/look/'+index;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();

@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import ReactDOM from 'react-dom'
 import Pubsub from 'pubsub-js'
+import api from '../config/api';
+
 var Artlength;
 class BgFrameConponent extends React.Component{
 
@@ -28,7 +30,7 @@ componentWillMount(){
         idd:'',
         credentials: 'include'
     }
-    fetch('http://wangjiang1996.applinzi.com/aaa/',obj).then((res)=>{
+    fetch(api+'/aaa/',obj).then((res)=>{
         return res.json();
     }).then((res)=>{
         // console.log(res[2].title);
@@ -48,7 +50,7 @@ componentWillMount(){
         });
     })
     //获取count的值
-    fetch('http://wangjiang1996.applinzi.com/fasong',{method:'get', credentials: 'include'}).then((res)=>{
+    fetch(api+'/fasong',{method:'get', credentials: 'include'}).then((res)=>{
         return res.text()
     }).then((res)=>{
         this.setState({
@@ -58,7 +60,7 @@ componentWillMount(){
 }
 //点击向服务器发送请求，验证是否为管理员，是则为其跳转到管理页面不是则跳转到登录界面
     // isManage(e){
-    //     var url = 'http://wangjiang1996.applinzi.com/mange';
+    //     var url = api+'/mange';
     //     var ojbk = {
     //         method : 'get',credentials: 'include',
     //         headers : {

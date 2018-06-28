@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDom from 'react-dom'
 import getTime from '../function/time'
-
+import api from '../config/api';
 
 import '../styles/writeArticles.css'
 var id;
@@ -18,7 +18,7 @@ class WriteArticlesComponent extends React.Component {
         var index = location.href.split('$')[1];
         id = index;
         if(index!=undefined && index!=null){
-        var url = 'http://wangjiang1996.applinzi.com/aaa/'+index;
+        var url = api+'/aaa/'+index;
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
@@ -46,10 +46,10 @@ class WriteArticlesComponent extends React.Component {
         var subTitle = title.value,
             subContent = writeContet.value;
             if(id==undefined) {
-                var url = 'http://wangjiang1996.applinzi.com/write';
+                var url = api+'/write';
                 var type = 'post';
             }else{
-                var url = 'http://wangjiang1996.applinzi.com/aaa/'+id;
+                var url = api+'/aaa/'+id;
                 var type = 'put';
             }
             var data = {

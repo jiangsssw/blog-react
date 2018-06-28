@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import '../styles/leaveMessage.css'
+import api from '../config/api';
 
 class manageSuggestion extends React.Component{
     constructor(propos){
@@ -10,7 +11,7 @@ class manageSuggestion extends React.Component{
         }
     }
     componentWillMount(){
-        var url = 'http://wangjiang1996.applinzi.com/sss';
+        var url = api+'/sss';
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{
@@ -26,7 +27,7 @@ class manageSuggestion extends React.Component{
     RemoveSuggestion(id,e){
         var SuggDom = ReactDOM.findDOMNode(this.refs['Rsugestion'+id]);
             SuggDom.style.display = 'none';
-        fetch('http://wangjiang1996.applinzi.com/removeSugg/'+id,{method:'delete',credentials:'include'}).then((res)=>{
+        fetch(api+'/removeSugg/'+id,{method:'delete',credentials:'include'}).then((res)=>{
             return res.text()
         }).then();
         e.preventDefault();

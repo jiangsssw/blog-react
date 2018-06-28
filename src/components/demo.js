@@ -7,7 +7,7 @@ class DemoComponent extends React.Component {
 
     //展示game節點
     showthisagme(e){
-        // fetch('http://wangjiang1996.applinzi.com/aaa/3',{method : 'get',credentials: 'include'}).then((res)=>{
+        // fetch(api+'/aaa/3',{method : 'get',credentials: 'include'}).then((res)=>{
         //     return res.json()
         // }).then((res)=>{
         //     console.log(res);

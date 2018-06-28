@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import getTime from '../function/time'
 
+import api from '../config/api';
 import '../styles/leaveMessage.css'
 var Message =[]
 class LeaveMessageComponent extends React.Component {
@@ -24,7 +25,7 @@ class LeaveMessageComponent extends React.Component {
             data = {
                 'time': getTime(),
                 'fakername': name.value,
-                'e-mail': email.value,
+                'email': email.value,
                 'message': info.value
             },
             obj = {
@@ -32,18 +33,19 @@ class LeaveMessageComponent extends React.Component {
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify(data)
+                body: data
                 ,credentials: 'include'
             };
+            console.log(JSON.stringify(data));
             suggestionDom.style.display = 'none';
             fishedDom.style.display = 'block';
-        var url = 'http://wangjiang1996.applinzi.com/sssWrite';
+        var url = api+'/sssWrite';
         if (name.value !== '' && name.value !== undefined) {
             if (email.value !== '' && email.value !== undefined) {
                 if (index > 0) {
                     if (info.value !== '' && name.value !== undefined) {
                         fetch(url, obj).then((res) => {
-                            return res.json()
+                            return res.json();
                         }).then((res)=>{
                              //将新写入的信息直接添加到留言板中,隱藏留言輸入框
                              Message.unshift(res);
@@ -71,7 +73,7 @@ class LeaveMessageComponent extends React.Component {
         e.stopPropagation();
     }
     componentWillMount(){
-        var url = 'http://wangjiang1996.applinzi.com/sss';
+        var url = api+'/sss';
         fetch(url,{method : 'get',credentials: 'include'}).then((res)=>{
             return res.json();
         }).then((res)=>{

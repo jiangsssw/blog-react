@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Link,Redirect} from 'react-router-dom'
-
+import api from '../config/api';
 
 import '../styles/login.css'
 class LoginComponent extends React.Component {
@@ -28,7 +28,7 @@ class LoginComponent extends React.Component {
                 body : JSON.stringify(data)
                 ,credentials: 'include'
             },
-            url ='http://wangjiang1996.applinzi.com/enter';
+            url =api+'/enter';
             fetch(url,obj).then((res)=>{
                 return res.json()
             }).then((res)=>{
@@ -47,7 +47,7 @@ class LoginComponent extends React.Component {
         e.stopPropagation();
     }
     componentWillMount(){
-        var url = 'http://wangjiang1996.applinzi.com/mange';
+        var url = api+'/mange';
         var ojbk = {
             method : 'get',credentials: 'include',
             headers : {

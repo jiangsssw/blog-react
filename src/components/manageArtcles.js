@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom'
 import { Link,Redirect} from 'react-router-dom'
 import Pubsub from 'pubsub-js'
 
+import api from '../config/api';
 var  Articles = [];
 let ArticlesDatas = []
 var  index = 1;
-var url = 'http://wangjiang1996.applinzi.com/look/'+index
+var url = api+'/look/'+index
 var lastpages;
 var id;
 class MannageArticles extends React.Component {
@@ -39,7 +40,7 @@ class MannageArticles extends React.Component {
     getNextpage(e) {
         index++;
        this.setButtonclick();
-        url = 'http://wangjiang1996.applinzi.com/look/' + index ;
+        url = api+'/look/' + index ;
         this.getRefleshDataFromServer(url);
         
         e.preventDefault();
@@ -47,7 +48,7 @@ class MannageArticles extends React.Component {
     }
     getPrePage(e) {
         index--;
-        url = 'http://wangjiang1996.applinzi.com/look/' + index ;
+        url = api+'/look/' + index ;
         this.getRefleshDataFromServer(url);
         this.setButtonclick();
         e.preventDefault();
@@ -85,7 +86,7 @@ class MannageArticles extends React.Component {
     }
     //删除文章
     toDeleteArticles(id, e) {
-        var api = 'http://wangjiang1996.applinzi.com/ddd/'+id;
+        var api = api+'/ddd/'+id;
         fetch(api,{method : 'delete',credentials: 'include'}).then((res)=>{
             return res;
         }).then();

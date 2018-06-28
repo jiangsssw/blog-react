@@ -1,6 +1,8 @@
 import React from 'react';
 import Pubsub from 'pubsub-js'
 import '../styles/checkArticles.css'
+import api from '../config/api';
+
 var url;
 class CheckArticles extends React.Component{
     constructor(props){
@@ -19,7 +21,7 @@ class CheckArticles extends React.Component{
 }
    
     componentWillMount(){
-          url ='http://wangjiang1996.applinzi.com/aaa/'+this.state.id;
+          url =api+'/aaa/'+this.state.id;
             fetch(url,{method:'get',credentials: 'include'}).then((res)=>{
                 return res.text();
             }).then((res)=>{

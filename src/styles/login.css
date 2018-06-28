@@ -9,8 +9,9 @@ ul,li{
     width: 100%;
     background: url("../images/milky-way.jpg");
     min-width: 860px;
-    height: 717px;
+    height: 900px;
 }
+
 .login{
     position: absolute;
     width: 40%;
