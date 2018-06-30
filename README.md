@@ -11,6 +11,6 @@ blog
 <pre>npm run server:dist</pre>
 <h3>打包并copy到dist目录</h3>
 <pre>npm run dist</pre>
-<p>dist目录下的文件为最终上线的前端项目文件，可复制部署到你的后台服务器上，此时要改[api地址](https://github.com/jiangsssw/blog-react/blob/master/src/config/api.js)</p>
+<p>dist目录下的文件为最终上线的前端项目文件，可复制部署到你的后台服务器上，此时要改</p>[api地址](https://github.com/jiangsssw/blog-react/blob/master/src/config/api.js)
 <br/>
-<p>这里我用json-server做了一个后台的服务器，[点击这里](https://github.com/jiangsssw/json-server-to-react)</p>
+<p>这里我用json-server做了一个后台的服务器</p>[点击这里](https://github.com/jiangsssw/json-server-to-react)
